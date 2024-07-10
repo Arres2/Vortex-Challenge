@@ -1,0 +1,29 @@
+.onBoarding{
+    height: 1000px;
+    width: 100%;
+    background-image: linear-gradient(blue, white);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-items: center;
+    padding: 50px;
+}
+.title{
+    font-size:200px;
+}
+.text{
+    font-weight: 900;
+    font-size: large;
+}
+.loginButton{
+    border-radius: 25px;
+    border: 2px solid black;
+    padding: 20px;
+    width: 120px;
+    height: 50px;
+    font-weight: 900;
+    font-size: large;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+}

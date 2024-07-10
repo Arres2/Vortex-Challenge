@@ -7,9 +7,11 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
+import { SupervisedUserCircle } from '@mui/icons-material';
+import { HouseSharp } from '@mui/icons-material';
+import { PostAdd } from '@mui/icons-material';
 import Link from "next/link";
+import { DocumentScannerOutlined } from '@mui/icons-material';
 import { usePathname } from "next/navigation";
 import { Router } from 'next/router';
 
@@ -33,15 +35,36 @@ export const Nav = () => {
         variant="permanent"
         anchor="left"
       >
-        <Toolbar />
-        <Divider />
+
         <List>
+
+        <ListItem >
+            <Link href= {"/upload"}>
+              <ListItemButton>
+                <ListItemIcon>
+                  <PostAdd />
+                </ListItemIcon>
+                <ListItemText primary={"Crear"} />
+              </ListItemButton>
+            </Link>
+          </ListItem>
+
+        <ListItem >
+            <Link href= {"/profile"}>
+              <ListItemButton>
+                <ListItemIcon>
+                  <SupervisedUserCircle />
+                </ListItemIcon>
+                <ListItemText primary={"Mi Perfil"} />
+              </ListItemButton>
+            </Link>
+          </ListItem>
           
           <ListItem >
             <Link href= {"/dashboard"}>
               <ListItemButton>
                 <ListItemIcon>
-                  <MailIcon />
+                  <HouseSharp />
                 </ListItemIcon>
                 <ListItemText primary={"Dashboard"} />
               </ListItemButton>
@@ -49,38 +72,20 @@ export const Nav = () => {
           </ListItem>
 
           <ListItem >
-            <Link href= {"/upload"}>
+            <Link href= {"/my_edits"}>
               <ListItemButton>
                 <ListItemIcon>
-                  <MailIcon />
+                  <DocumentScannerOutlined />
                 </ListItemIcon>
-                <ListItemText primary={"Upload"} />
+                <ListItemText primary={"Mis Ediciones"} />
               </ListItemButton>
             </Link>
           </ListItem>
 
-          <ListItem >
-            <Link href= {"/dashboard"}>
-              <ListItemButton>
-                <ListItemIcon>
-                  <MailIcon />
-                </ListItemIcon>
-                <ListItemText primary={"Dashboard"} />
-              </ListItemButton>
-            </Link>
-          </ListItem>
 
-          <ListItem >
-            <ListItemButton>
-              <ListItemIcon>
-                <MailIcon />
-              </ListItemIcon>
-              <ListItemText primary={"Something"} />
-            </ListItemButton>
-          </ListItem>
        
         </List>
-        <Divider />
+  
     
       </Drawer>
       

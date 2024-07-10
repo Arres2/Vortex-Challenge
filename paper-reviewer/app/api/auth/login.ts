@@ -8,7 +8,6 @@ export default async function handler(
   try {
     const { email, password } = req.body
     await signIn({ email, password })
- 
     res.status(200).json({ success: true })
   } catch (error) {
     if (error.type === 'CredentialsSignin') {

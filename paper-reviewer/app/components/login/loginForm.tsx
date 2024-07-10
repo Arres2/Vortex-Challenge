@@ -1,3 +1,4 @@
+'use client';
 import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
@@ -11,22 +12,26 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useRouter } from 'next/navigation'
+import { useAppDispatch} from "@/lib/hooks";
+import { loginAsync } from '@/lib/features/user/userSlice';
 
 
-// TODO remove, this demo shouldn't need to reset the theme.
-// const defaultTheme = createTheme();
+
 
 export default function LoginForm() {
-
-  // const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-  //   event.preventDefault();
-  //   const data = new FormData(event.currentTarget);
-  //   console.log({
-  //     email: data.get('email'),
-  //     password: data.get('password'),
-  //   });
-  // };
+  const router = useRouter()
+  const dispatch = useAppDispatch()
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    try{
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    dispatch(loginAsync(data.get('email'), data.get('password')))
+    router.push('/(app)/dashboard')
+  }catch{
+    throw Error
+  }
+  };
 
   return (
     // <ThemeProvider theme={defaultTheme}>
@@ -46,7 +51,7 @@ export default function LoginForm() {
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
-          <Box component="form" onSubmit={""} noValidate sx={{ mt: 1 }}>
+          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
             <TextField
               margin="normal"
               required
